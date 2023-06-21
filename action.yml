@@ -29,6 +29,7 @@ runs:
     # These tell ansible-lint to use github compatible annotation format:
     GITHUB_ACTIONS: "true"
     GITHUB_WORKFLOW: "{{ github.workflow.name }}"
+    ANSIBLE_COLLECTIONS_PATHS: "/github/workspace"
   args:
     - --offline
     - --profile
