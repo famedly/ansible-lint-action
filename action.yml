@@ -30,4 +30,11 @@ runs:
     GITHUB_ACTIONS: "true"
     GITHUB_WORKFLOW: "{{ github.workflow.name }}"
   args:
+    - --offline
+    - --profile
+    - safety
+    - --skip-list
+    - name[play],name[template],fqcn[action-core],no-tabs
+    - --enable-list
+    - no-handler,no-relative-paths,ignore-errors,meta-incorrect,meta-no-info,meta-no-tags,fqcn
     - ${{ inputs.path }}
