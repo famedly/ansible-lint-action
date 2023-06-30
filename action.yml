@@ -5,6 +5,12 @@ branding:
   icon: shield
   color: red
 inputs:
+  python_version:
+    required: false
+    default: "3.11"
+  ansible_version:
+    required: false
+    default: "7.2.0"
   path:
     description: >
       Specific path to lint instead of the default `.`. Multiple arguments are
@@ -23,7 +29,7 @@ inputs:
     default: ""
 runs:
   using: docker
-  image: docker://registry.gitlab.com/famedly/infra/containers/ansible-test-suite:py3.11-ansible7.2.0
+  image: docker://registry.gitlab.com/famedly/infra/containers/ansible-test-suite:py${{ inputs.python_version }}-ansible${{ inputs.ansible_version }}
   entrypoint: /usr/local/bin/ansible-lint
   env:
     # These tell ansible-lint to use github compatible annotation format:
